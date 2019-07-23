@@ -14,24 +14,13 @@ app.use(express.json());
 
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
-const commentsRouter = require('./routes/commentsRouter');
-const doctorRouter = require('./routes/doctorRouter');
-const departmentRouter = require('./routes/departmentRouter');
-
-app.get('/', function (req, res) {
-
-    res.json({
-        success: true,
-        msg: 'home page'
-    });
-});
+const restaurantRouter = require('./routes/restaurantRouter');
 
 
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
-app.use('/comments', commentsRouter);
-app.use('/doctor', doctorRouter);
-app.use('/department', departmentRouter);
+app.use('/restaurant', restaurantRouter);
+
 
 
 

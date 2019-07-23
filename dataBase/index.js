@@ -6,7 +6,7 @@ const {resolve} = require('path');
 module.exports = (() => {
     let instance;
     function initConnection() {
-        const client = new Sequalize('palka_1800', 'root', '1337', {
+        const client = new Sequalize('restaurant', 'root', '1337', {
             host: 'localhost',
             dialect: 'mysql'
         });
