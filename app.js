@@ -15,11 +15,13 @@ app.use(express.json());
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
 const restaurantRouter = require('./routes/restaurantRouter');
+const menuRouter = require('./routes/menuRouter');
 
 
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/restaurant', restaurantRouter);
+app.use('/menu', menuRouter);
 
 
 
