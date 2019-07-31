@@ -1,5 +1,4 @@
 const db = require('../../dataBase').getInstance();
-const tokenVerificator = require('../../helpers/tokenVerificator').auth;
 
 module.exports = async (req, res) => {
     try {

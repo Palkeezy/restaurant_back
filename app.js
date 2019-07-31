@@ -16,12 +16,14 @@ const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
 const restaurantRouter = require('./routes/restaurantRouter');
 const menuRouter = require('./routes/menuRouter');
+const ratingRouter = require('./routes/ratingRouter');
 
 
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/restaurant', restaurantRouter);
 app.use('/menu', menuRouter);
+app.use('/rating', ratingRouter);
 
 
 

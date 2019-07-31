@@ -8,14 +8,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             foreignKey:true
         },
-        user_id: {
+        users_id: {
             type: DataTypes.INTEGER,
             foreignKey:true
         },
         stars: {
             type: DataTypes.INTEGER
         },
-        comments: {
+        comment: {
             type: DataTypes.STRING
         }
     }, {
