@@ -8,9 +8,7 @@ module.exports = async (req, res) => {
         const token = req.get('Authorization');
         const {id, role} = tokenVerificator(token, secret);
         const {ratingId, restaurantId} = req.params;
-
-
-        if (!ratingId) throw new Error('Something wrong with URL');
+        if (!ratingId || !restaurantId) throw new Error('Something wrong with URL');
         if (!role) throw new Error("U have no rights to do this");
 
         const ratingToDelete = await RatingModel.findOne({
