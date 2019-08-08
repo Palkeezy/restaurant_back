@@ -15,13 +15,13 @@ module.exports = async (req, res) => {
 
         res.json({
             success: true,
-            message: allUsers
+            msg: allUsers
         })
     } catch (e) {
         console.log(e);
         res.json({
             success: false,
-            message: e.message
+            msg: e.message
         })
     }
 };

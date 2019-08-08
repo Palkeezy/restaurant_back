@@ -30,13 +30,13 @@ module.exports = async (req, res) => {
 
         res.json({
             success: true,
-            message: `Rating is deleted from db`
+            msg: `Rating is deleted from db`
         })
     } catch (e) {
         console.log(e);
         res.json({
             success: false,
-            message: e.message
+            msg: e.message
         })
     }
 };

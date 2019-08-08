@@ -27,13 +27,13 @@ module.exports = async (req, res) => {
 
         res.json({
             success: true,
-            message: `Dishes ${dishesToDelete.dataValues.name} is deleted from db`
+            msg: `Dishes ${dishesToDelete.dataValues.name} is deleted from db`
         })
     } catch (e) {
         console.log(e);
         res.json({
             success: false,
-            message: e.message
+            msg: e.message
         })
     }
 };

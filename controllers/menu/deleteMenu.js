@@ -27,13 +27,13 @@ module.exports = async (req, res) => {
 
         res.json({
             success: true,
-            message: `Menu ${menuToDelete.dataValues.name} is deleted from db`
+            msg: `Menu ${menuToDelete.dataValues.name} is deleted from db`
         })
     } catch (e) {
         console.log(e);
         res.json({
             success: false,
-            message: e.message
+            msg: e.message
         })
     }
 };
