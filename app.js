@@ -1,16 +1,21 @@
 const express = require('express');
+const {resolve: resolvePath} = require('path');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 
 const cors = require('cors');
-app.use(cors());
-
 const dataBase = require('./dataBase').getInstance();
+
 dataBase.setModels();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(express.static(resolvePath(__dirname, 'public')));
+app.use(cors());
+app.use(fileUpload());
 
+global.appRoot = __dirname;
 
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');

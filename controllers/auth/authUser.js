@@ -6,10 +6,7 @@ module.exports = async (req, res) => {
         const {email = '', password = ''} = req.body;
         if (!email || !password) throw new Error('Some fields is empty');
         const isPresent = await UsersModel.findOne({
-            where: {
-                email,
-                password
-            }
+            where: {email}
         });
         if (!isPresent) throw new Error('You are not register');
         const {id, name, role} = isPresent;
