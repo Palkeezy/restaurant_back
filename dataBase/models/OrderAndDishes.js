@@ -2,7 +2,8 @@ module.exports = (sequelize, DataTypes) => {
     const OrderAndDishes = sequelize.define('OrderAndDishes', {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement:true
         },
         order_id: {
             type: DataTypes.INTEGER,

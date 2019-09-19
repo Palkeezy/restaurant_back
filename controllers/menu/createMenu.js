@@ -1,14 +1,17 @@
+const {resolve: resolvePath} = require('path');
 const db = require('../../dataBase').getInstance();
 const tokenVerificator = require('../../helpers/tokenVerificator').auth;
 const roles = require('../../constants/roles');
 const {secret} = require('../../constants/secret');
+const fileChecker = require('../../helpers/fileChecker');
+const {MENU} = require('../../constants/dirEnum');
 
 module.exports = async (req, res) => {
     try {
         const MenuModel = db.getModel('Menu');
         const RestaurantModel = db.getModel('Restaurant');
-        const {name, restaurant_id, img} = req.body;
-        if (!name || !restaurant_id || !img) throw new Error('Some field is empty');
+        const {name, restaurant_id} = req.body;
+        if (!name || !restaurant_id) throw new Error('Some field is empty');
         const token = req.get('Authorization');
         const {id, role} = tokenVerificator(token, secret);
         if (role === roles.Client) throw new Error("U have no rights to do this");
@@ -27,10 +30,15 @@ module.exports = async (req, res) => {
             }
         });
         if (isPresent) throw new Error('Menu has already exist');
-        const newMenu = await MenuModel.create({
+        const photo = req.files;
+        if (!photo) throw new Error('Please add menu photo');
+        const {photo: img} = await fileChecker(req.files, name, MENU);
+        img.mv(resolvePath(`${appRoot}/public/${img.path}`));
+
+        await MenuModel.create({
             name,
             restaurant_id,
-            img
+            img: img.path
         });
 
         res.json({

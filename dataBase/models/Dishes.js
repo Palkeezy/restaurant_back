@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     const Dishes = sequelize.define('Dishes', {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement:true
         },
         name: {
             type: DataTypes.STRING
